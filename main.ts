@@ -1,14 +1,35 @@
 namespace SpriteKind {
     export const star = SpriteKind.create()
     export const minimap = SpriteKind.create()
+    export const Interact = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile2, function (sprite, location) {
     if (controller.A.isPressed()) {
         if (!(Imposter_chance)) {
             if (dead != 1) {
+                Computerchange = sprites.create(img`
+                    b b b b b c c c c c c b b b b b 
+                    b b b d c c c c c c c b b b b b 
+                    b d d d c 8 8 6 6 c c d d d d d 
+                    b d d d c 8 8 8 6 c c d d d d d 
+                    b d d d c 8 8 8 8 c c d d d d d 
+                    b d e e c 8 8 8 8 c c e e e e e 
+                    b e e e c c c c c c e e e e e e 
+                    b e e e e e e e e e e e e e e e 
+                    e e e e 1 1 1 1 e e e e e e e e 
+                    e e e 1 1 1 1 1 1 e e e e e e e 
+                    e e e e e e e e e e e e e e d e 
+                    e d e d d d d d d d d d e e d e 
+                    e d d d d d d d d d d d e e d d 
+                    e b b b b b b b b b b b e e b b 
+                    e b b d d d d d b b b b e e b b 
+                    b d d d d d d d d d d d d d d d 
+                    `, SpriteKind.Interact)
+                tiles.placeOnTile(Computerchange, tiles.getTileLocation(Red.x / scene.screenWidth(), Red.y / scene.screenHeight()))
                 controller.moveSprite(Red, 0, 0)
                 timer.after(10000, function () {
                     controller.moveSprite(Red, 100, 100)
+                    Computerchange.destroy(effects.confetti, 500)
                 })
             }
         }
@@ -226,6 +247,7 @@ function dead2 () {
 }
 let star: Sprite = null
 let Imposter = 0
+let Computerchange: Sprite = null
 let Red: Sprite = null
 let Imposter_chance = false
 let dead = 0
