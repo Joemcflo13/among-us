@@ -138,8 +138,8 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile11, function (sprite, locatio
     }
 })
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
-    Imposter_chance = Math.percentChance(100)
-    if (Imposter_chance) {
+    Imposter += 1
+    if (Imposter == 1) {
         game.setDialogFrame(img`
             333333333333333333333333
             3dddddddddddddddddddddd3
@@ -167,6 +167,38 @@ controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
             cccccccccccccccccccccccc
             `)
         game.showLongText("IMPOSTER", DialogLayout.Center)
+        Imposter_chance = Math.percentChance(100)
+    }
+    if (Imposter == 2) {
+        game.setDialogFrame(img`
+            333333333333333333333333
+            3dddddddddddddddddddddd3
+            bd1ddddddddddddddddd1d3b
+            b3113333333333333333113b
+            b3333333333333333333333b
+            b3333333333333333333333b
+            b3333333333333333333333b
+            b3333333333333333333333b
+            b3333333333333333333333b
+            b3333333333333333333333b
+            b3333333333333333333333b
+            b3333333333333333333333b
+            b3333333333333333333333b
+            b3333333333333333333333b
+            b3333333333333333333333b
+            b3333333333333333333333b
+            b3333333333333333333333b
+            b3333333333333333333333b
+            b3333333333333333333333b
+            b3133333333333333333133b
+            b3113333333333333333113b
+            bb33333333333333333333bb
+            bccccccccccccccccccccccb
+            cccccccccccccccccccccccc
+            `)
+        game.showLongText("CREW-MATE", DialogLayout.Center)
+        Imposter_chance = Math.percentChance(0)
+        Imposter = 0
     }
 })
 function dead2 () {
@@ -193,6 +225,7 @@ function dead2 () {
     Red.setFlag(SpriteFlag.StayInScreen, true)
 }
 let star: Sprite = null
+let Imposter = 0
 let Red: Sprite = null
 let Imposter_chance = false
 let dead = 0
@@ -391,7 +424,7 @@ tiles.setTilemap(tiles.createTilemap(hex`500032000000000000000000000000000000000
     ................................................................................
     `, [myTiles.transparency16,myTiles.tile1,myTiles.tile3,myTiles.tile4,myTiles.tile5,myTiles.tile6,myTiles.tile8,myTiles.tile9,myTiles.tile2,myTiles.tile11,myTiles.tile12,myTiles.tile13,myTiles.tile14,myTiles.tile15,myTiles.tile16,myTiles.tile17,myTiles.tile18,myTiles.tile19], TileScale.Sixteen))
 scene.cameraFollowSprite(Red)
-info.startCountdown(1)
+info.startCountdown(15)
 game.onUpdate(function () {
 	
 })
