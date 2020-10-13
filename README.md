@@ -3,6 +3,10 @@
 
 > Open this page at [https://joemcflo13.github.io/among-us/](https://joemcflo13.github.io/among-us/)
 
+### Play this game!
+
+<div style="position:relative;height:0;padding-bottom:117.6%;overflow:hidden;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://arcade.makecode.com/---run?id=_TTf5Xr384cDe" allowfullscreen="allowfullscreen" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" frameborder="0"></iframe></div>
+
 ## Use as Extension
 
 This repository can be added as an **extension** in MakeCode.
