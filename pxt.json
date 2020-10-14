@@ -5,8 +5,9 @@
     "dependencies": {
         "device": "*",
         "arcade-text": "github:microsoft/arcade-text#v1.3.0",
-        "arcade-minimap": "github:microsoft/arcade-minimap#v0.6.1",
-        "Timers": "github:microsoft/arcade-timers#v1.1.0"
+        "Timers": "github:microsoft/arcade-timers#v1.1.0",
+        "tilemaps": "github:microsoft/pxt-tilemaps#v1.9.2",
+        "arcade-minimap": "github:microsoft/arcade-minimap#v0.6.1"
     },
     "files": [
         "main.blocks",
