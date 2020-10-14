@@ -439,8 +439,7 @@ scene.setBackgroundImage(img`
     `)
 tiles.setTilemap(tilemap`level_1`)
 scene.cameraFollowSprite(Red)
-info.startCountdown(1)
-Red.setFlag(SpriteFlag.Ghost, false)
+info.startCountdown(15)
 game.onUpdateInterval(100, function () {
     star2 = sprites.create(img`
         1 
