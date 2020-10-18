@@ -2,6 +2,7 @@ namespace SpriteKind {
     export const star = SpriteKind.create()
     export const minimap = SpriteKind.create()
     export const Interact = SpriteKind.create()
+    export const CPU = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile2, function (sprite, location) {
     if (controller.A.isPressed()) {
@@ -63,11 +64,11 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
+        . . . . . . . 2 . . . . . . . . 
+        . . . . . 3 2 f f . . . . . . . 
+        . . . . . 3 2 2 . . . . . . . . 
+        . . . . . 3 2 2 . . . . . . . . 
+        . . . . . . f f . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -80,11 +81,25 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     Mapsprite.lifespan = 3000
     Mapsprite.z = 200
     myMinimap = minimap.minimap(MinimapScale.Sixteenth, 2, 0)
-    minimap.includeSprite(myMinimap, Red, MinimapSpriteScale.MinimapScale)
+    minimap.includeSprite(myMinimap, Red, MinimapSpriteScale.Octuple)
+    minimap.includeSprite(myMinimap, Dummy_1, MinimapSpriteScale.Octuple)
+    minimap.includeSprite(myMinimap, Dummy_2, MinimapSpriteScale.Octuple)
     Mapsprite.setImage(minimap.getImage(minimap.minimap(MinimapScale.Sixteenth, 2, 0)))
     timer.after(3000, function () {
         controller.moveSprite(Red, 100, 100)
     })
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.CPU, function (sprite, otherSprite) {
+    if (Imposter_chance) {
+        if (controller.A.isPressed()) {
+            otherSprite.destroy(effects.fire, 60)
+            Kills += 1
+        }
+    } else {
+        if (controller.A.isPressed()) {
+            otherSprite.say("Hello", 500)
+        }
+    }
 })
 info.onCountdownEnd(function () {
     Start_game()
@@ -131,6 +146,7 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile11, function (sprite, locatio
         if (!(Imposter_chance)) {
             if (dead != 1) {
                 controller.moveSprite(Red, 0, 0)
+                Red.startEffect(effects.fire, 8000)
                 timer.after(10000, function () {
                     controller.moveSprite(Red, 100, 100)
                 })
@@ -292,9 +308,12 @@ let myMinimap: minimap.Minimap = null
 let Mapsprite: Sprite = null
 let Computerchange: Sprite = null
 let s1: TextSprite = null
+let Dummy_2: Sprite = null
+let Dummy_1: Sprite = null
 let Red: Sprite = null
 let Imposter_chance = false
 let dead = 0
+let Kills = 0
 dead = 0
 Imposter_chance = Math.percentChance(0)
 Red = sprites.create(img`
@@ -315,6 +334,91 @@ Red = sprites.create(img`
 controller.moveSprite(Red)
 Red.z = 100
 Red.setPosition(98, 124)
+Dummy_1 = sprites.create(img`
+    . . . . f f f . . . 
+    . . . f 9 9 9 f . . 
+    . . f 9 9 f f f f . 
+    f f f 9 f b d 1 1 f 
+    f d f 9 f b b d d f 
+    f d f 9 9 f f f f . 
+    f d f 9 9 9 9 f . . 
+    f d f 9 9 9 9 f . . 
+    f d f 9 9 9 9 f . . 
+    f d f 9 9 9 9 f . . 
+    . f f 9 f f 9 f . . 
+    . . f 9 f f 9 f . . 
+    . . f f . . f f . . 
+    `, SpriteKind.CPU)
+Dummy_1.setPosition(392, 248)
+Dummy_1.say("Dummy 1")
+Dummy_2 = sprites.create(img`
+    . . . . f f f . . . 
+    . . . f 4 4 4 f . . 
+    . . f 4 4 f f f f . 
+    f f f 4 f b d 1 1 f 
+    f d f 4 f b b d d f 
+    f d f 4 4 f f f f . 
+    f d f 4 4 4 4 f . . 
+    f d f 4 4 4 4 f . . 
+    f d f 4 4 4 4 f . . 
+    f d f 4 4 4 4 f . . 
+    . f f 4 f f 4 f . . 
+    . . f 4 f f 4 f . . 
+    . . f f . . f f . . 
+    `, SpriteKind.CPU)
+Dummy_2.setPosition(424, 551)
+Dummy_2.say("Dummy 2")
+let Dummy_3 = sprites.create(img`
+    . . . . f f f . . . 
+    . . . f 8 8 8 f . . 
+    . . f 8 8 f f f f . 
+    f f f 8 f b d 1 1 f 
+    f 6 f 8 f b b d d f 
+    f 6 f 8 8 f f f f . 
+    f 6 f 8 8 8 8 f . . 
+    f 6 f 8 8 8 8 f . . 
+    f 6 f 8 8 8 8 f . . 
+    f 6 f 8 8 8 8 f . . 
+    . f f 8 f f 8 f . . 
+    . . f 8 f f 8 f . . 
+    . . f f . . f f . . 
+    `, SpriteKind.CPU)
+Dummy_3.setPosition(631, 598)
+Dummy_3.say("Dummy 3")
+let Dummy_4 = sprites.create(img`
+    . . . . f f f . . . 
+    . . . f e e e f . . 
+    . . f e e f f f f . 
+    f f f e f b d 1 1 f 
+    f b f e f b b d d f 
+    f b f e e f f f f . 
+    f b f e e e e f . . 
+    f b f e e e e f . . 
+    f b f e e e e f . . 
+    f b f e e e e f . . 
+    . f f e f f e f . . 
+    . . f e f f e f . . 
+    . . f f . . f f . . 
+    `, SpriteKind.CPU)
+Dummy_4.setPosition(808, 534)
+Dummy_4.say("Dummy 4")
+let Dummy_5 = sprites.create(img`
+    . . . . f f f . . . 
+    . . . f 7 7 7 f . . 
+    . . f 7 7 f f f f . 
+    f f f 7 f b d 1 1 f 
+    f d f 7 f b b d d f 
+    f d f 7 7 f f f f . 
+    f d f 7 7 7 7 f . . 
+    f d f 7 7 7 7 f . . 
+    f d f 7 7 7 7 f . . 
+    f d f 7 7 7 7 f . . 
+    . f f 7 f f 7 f . . 
+    . . f 7 f f 7 f . . 
+    . . f f . . f f . . 
+    `, SpriteKind.CPU)
+Dummy_5.setPosition(843, 134)
+Dummy_5.say("Dummy 5")
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -440,6 +544,13 @@ scene.setBackgroundImage(img`
 tiles.setTilemap(tilemap`level_1`)
 scene.cameraFollowSprite(Red)
 info.startCountdown(15)
+Red.setFlag(SpriteFlag.ShowPhysics, true)
+game.onUpdate(function () {
+    if (Kills == 4) {
+        game.showLongText("You have killed all but one, and that is all you need...", DialogLayout.Center)
+        game.over(true, effects.slash)
+    }
+})
 game.onUpdateInterval(100, function () {
     star2 = sprites.create(img`
         1 
