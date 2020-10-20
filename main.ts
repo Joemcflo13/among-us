@@ -3,6 +3,7 @@ namespace SpriteKind {
     export const minimap = SpriteKind.create()
     export const Interact = SpriteKind.create()
     export const CPU = SpriteKind.create()
+    export const Task = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile2, function (sprite, location) {
     if (controller.A.isPressed()) {
@@ -222,7 +223,7 @@ controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 function Start_game () {
-    Imposter_chance = Math.percentChance(15)
+    Imposter_chance = Math.percentChance(20)
     Red.setPosition(448, 189)
     if (Imposter_chance) {
         game.setDialogFrame(img`
