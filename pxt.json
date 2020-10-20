@@ -7,7 +7,8 @@
         "arcade-text": "github:microsoft/arcade-text#v1.3.0",
         "Timers": "github:microsoft/arcade-timers#v1.1.0",
         "tilemaps": "github:microsoft/pxt-tilemaps#v1.9.2",
-        "arcade-minimap": "github:microsoft/arcade-minimap#v0.6.1"
+        "arcade-minimap": "github:microsoft/arcade-minimap#v0.6.1",
+        "arcade-tilemap-a-star": "github:jwunderl/arcade-tilemap-a-star#v0.3.2"
     },
     "files": [
         "main.blocks",

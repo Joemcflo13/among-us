@@ -154,6 +154,9 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile11, function (sprite, locatio
         }
     }
 })
+scene.onPathCompletion(SpriteKind.CPU, function (sprite, location) {
+    Path_maybe = scene.aStar(tiles.locationOfSprite(sprite), tiles.locationOfSprite(sprite), myTiles.tile1)
+})
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     Imposter += 1
     if (Imposter == 1) {
@@ -308,6 +311,7 @@ let myMinimap: minimap.Minimap = null
 let Mapsprite: Sprite = null
 let Computerchange: Sprite = null
 let s1: TextSprite = null
+let Path_maybe: tiles.Location[] = []
 let Dummy_2: Sprite = null
 let Dummy_1: Sprite = null
 let Red: Sprite = null
@@ -543,8 +547,9 @@ scene.setBackgroundImage(img`
     `)
 tiles.setTilemap(tilemap`level_1`)
 scene.cameraFollowSprite(Red)
-info.startCountdown(15)
+info.startCountdown(1)
 Red.setFlag(SpriteFlag.ShowPhysics, true)
+Path_maybe = scene.aStar(tiles.locationOfSprite(Red), tiles.locationOfSprite(Red), myTiles.tile1)
 game.onUpdate(function () {
     if (Kills == 4) {
         game.showLongText("You have killed all but one, and that is all you need...", DialogLayout.Center)
