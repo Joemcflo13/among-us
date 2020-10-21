@@ -5,7 +5,7 @@
 
 ### Play this game!
 
-https://arcade.makecode.com/---run?id=_d9f7vpdu4JLc
+https://makecode.com/_cqw0sdfPegFo
 
 ## Use as Extension
 
