@@ -5,12 +5,11 @@
 
 ### Play this game!
 
-<div style="position:relative;height:0;padding-bottom:117.6%;overflow:hidden;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://arcade.makecode.com/---run?id=_U78R5W4WEWs6" allowfullscreen="allowfullscreen" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" frameborder="0"></iframe></div>
+<div style="position:relative;height:0;padding-bottom:117.6%;overflow:hidden;"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://arcade.makecode.com/---run?id=_d9f7vpdu4JLc" allowfullscreen="allowfullscreen" sandbox="allow-popups allow-forms allow-scripts allow-same-origin" frameborder="0"></iframe></div>
 
 ## Use as Extension
 
 This repository can be added as an **extension** in MakeCode.
-* go to [https://google.com](https://google.com)
 * open [https://arcade.makecode.com/](https://arcade.makecode.com/)
 * click on **New Project**
 * click on **Extensions** under the gearwheel menu
